@@ -70,10 +70,14 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 
     Column(
         modifier = Modifier
-            .fillMaxWidth()
-            .background(tst_ochre)
+            .fillMaxSize()
+            .background(tst_ochre),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = ":(")
+        Text(
+            text = ":(",
+        )
 //
 //        TabRow(
 //            selectedTabIndex = pagerState.currentPage,
