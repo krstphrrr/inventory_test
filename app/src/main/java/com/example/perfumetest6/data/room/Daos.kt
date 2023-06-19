@@ -92,3 +92,7 @@ data class ItemsWithFormulaAndInventory(
     @Embedded val formula: FormulaList,
     @Embedded val inventory: InventoryItem,
 )
+
+data class InventoryItems(
+    @Embedded val inventory: InventoryItem
+)

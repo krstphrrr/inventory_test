@@ -18,7 +18,8 @@ data class InventoryItem(
     val supplier: String,
     val acquisitionDate: Long,
     val itemDescription: String,
-    val itemNotes: String
+    val itemNotes: String,
+    val isChecked: Boolean,
 )
 
 @Entity(tableName = "formula_list")
@@ -43,5 +44,5 @@ data class FormulaItem(
     val inventoryItemFk: Int,
     val formulaItemNotes: String,
     val formulaItemCreationDate: Date,
-    val isChecked: Boolean
+    val formulaItemIsChecked: Boolean
 )

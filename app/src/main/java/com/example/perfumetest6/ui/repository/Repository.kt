@@ -6,14 +6,15 @@ import com.example.perfumetest6.data.room.InventoryItemDao
 import com.example.perfumetest6.data.room.models.FormulaItem
 import com.example.perfumetest6.data.room.models.FormulaList
 import com.example.perfumetest6.data.room.models.InventoryItem
+import kotlinx.coroutines.flow.Flow
 
 class Repository (
     private val inventoryItemDao: InventoryItemDao,
     private val formulaDao: FormulaDao,
     private val formulaItemDao: FormulaItemDao
     ){
-//     get all
-    val inventory = inventoryItemDao.getAllInventoryItems()
+
+//    val getItemsWithFormulaAndInventory = FormulaItemDao.
 
 
 //    complex queries
@@ -28,6 +29,11 @@ class Repository (
         formulaDao.insert(formula)
     }
     //    inventory methods
+    //     get all
+    val getAllInventoryItems = inventoryItemDao.getAllInventoryItems()
+    fun getInventoryItem(id: Int): Flow<InventoryItem> {
+        return inventoryItemDao.getInventoryItem(id)
+    }
     suspend fun insertItem(item: InventoryItem){
         inventoryItemDao.insert(item)
     }
