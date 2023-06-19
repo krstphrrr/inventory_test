@@ -4,10 +4,12 @@ import android.annotation.SuppressLint
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.layout.size
@@ -33,6 +35,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.perfumetest6.data.room.InventoryItems
+import com.example.perfumetest6.data.room.models.InventoryItem
 import com.example.perfumetest6.ui.Category
 import com.example.perfumetest6.ui.Utils
 
@@ -59,7 +63,9 @@ fun InventoryScreen(
             }
         
     } ) {
-        LazyColumn {
+        LazyColumn(
+//            Modifier.paint(painterResource(id = R.drawable.ic_allie), contentScale = ContentScale.FillHeight)
+        ){
             item {
                 LazyRow {
                     items(Utils.category) { category: Category ->
@@ -73,6 +79,9 @@ fun InventoryScreen(
                         Spacer(modifier = Modifier.size(16.dp))
                     }
                 }
+            }
+            items(inventoryState.items){
+
             }
         }
     }
@@ -96,7 +105,7 @@ fun CategoryItem(
             )
             .background(
                 if (selected) MaterialTheme.colorScheme.primary.copy(.5f)
-                else MaterialTheme.colorScheme.onSurface
+                else MaterialTheme.colorScheme.surface
             ),
         border = BorderStroke(
             1.dp,
@@ -123,6 +132,32 @@ fun CategoryItem(
                 style = MaterialTheme.typography.bodySmall,
                 fontWeight = FontWeight(16)
             )
+        }
+    }
+}
+
+@Composable
+fun InventoryItems(
+    item:InventoryItems,
+    isChecked:Boolean,
+    onCheckedChange:(InventoryItem,Boolean)->Unit,
+    onItemClick:() -> Unit
+) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable{
+                onItemClick.invoke()
+            }
+            .padding(8.dp)
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ){
+
         }
     }
 }
