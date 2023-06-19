@@ -11,6 +11,9 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -30,6 +33,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.perfumetest6.ui.Category
+import com.example.perfumetest6.ui.Utils
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -54,22 +59,22 @@ fun InventoryScreen(
             }
         
     } ) {
-//        LazyColumn {
-//            item {
-//                LazyRow {
-//                    items(Utils.category) { category: Category ->
-//                        CategoryItem(
-//                            iconRes = category.resId,
-//                            title = category.title,
-//                            selected = category == inventoryState.category
-//                        ) {
-//                            inventoryViewModel.onCategoryChange(category)
-//                        }
-//                        Spacer(modifier = Modifier.size(16.dp))
-//                    }
-//                }
-//            }
-//        }
+        LazyColumn {
+            item {
+                LazyRow {
+                    items(Utils.category) { category: Category ->
+                        CategoryItem(
+                            iconRes = category.resId,
+                            title = category.title,
+                            selected = category == inventoryState.category
+                        ) {
+                            inventoryViewModel.onCategoryChange(category)
+                        }
+                        Spacer(modifier = Modifier.size(16.dp))
+                    }
+                }
+            }
+        }
     }
 }
 
