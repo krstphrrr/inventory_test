@@ -4,8 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -44,19 +42,20 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+                    val padding = 10.dp
                   Scaffold(
                       bottomBar = {
                           BottomNavigationScreen(
                               navController = navController,
                               items = listItems
                           )
-                      }
+                      },
 
-                  ){content ->
+
+                  ){ contentPadding->
 
                       BottomNavHost(
                           navHostController = navController,
-                          modifier = Modifier.padding(0.dp)
                       )
                   }
 //                    BottomNav()

@@ -16,7 +16,7 @@ data class InventoryItem(
     val inventoryAmountG: Double,
     val cost: Double,
     val supplier: String,
-    val acquisitionDate: Long,
+    val acquisitionDate: Date,
     val itemDescription: String,
     val itemNotes: String,
     val isChecked: Boolean,
